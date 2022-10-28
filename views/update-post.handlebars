@@ -1,0 +1,22 @@
+<div class="row justify-content-center">
+  <h2 class="col-8 mt-5 user-select-none">Edit Post</h2>
+  <div class="col-8 mt-5">
+    <form class="post-form">
+      <input
+        type="text"
+        class="form-control mb-3"
+        id="post-title"
+        placeholder="Post Title"
+        value="{{title}}"
+      />
+      <textarea
+        class="form-control mb-3"
+        id="post-content"
+        rows="7"
+        placeholder="Input your post content here."
+      >{{content}}</textarea>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>
+<script src="/js/update-post.js"></script>
