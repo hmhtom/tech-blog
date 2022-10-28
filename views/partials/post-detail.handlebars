@@ -1,0 +1,23 @@
+<div class="card m-5 user-select-none">
+  <div class="card-header bg-dark text-light">
+    <h5>
+      <a class="card-title text-light" href="/post/{{id}}">
+        {{title}}
+      </a>
+      <span class="float-end">
+        <h6 class="card-subtitle mb-2 text-muted">
+          Create
+          {{#if user}}
+            by
+            {{user.username}}
+          {{/if}}
+          on
+          {{format_date createdAt}}
+        </h6>
+      </span>
+    </h5>
+  </div>
+  <div class="card-body">
+    {{subString content}}
+  </div>
+</div>
