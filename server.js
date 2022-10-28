@@ -9,6 +9,10 @@ const exphbs = require("express-handlebars");
 const sequelize = require("./config/connection");
 //Import SQL session store
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
+//Import server route controller
+const routes = require("./controllers");
+//Import Helper function for Views
+const helpers = require("./utils/helper");
 
 //Initializing Express app
 const app = express();
@@ -36,7 +40,7 @@ const session_config = {
 app.use(session(session_config));
 
 //Initializing View Engine
-const hbs = exphbs.create();
+const hbs = exphbs.create({ helpers });
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
@@ -45,6 +49,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 //Static file middleware
 app.use(express.static(path.join(__dirname, "public")));
+
+//Router middleware
+app.use(routes);
 
 //Starting server through sequelize
 sequelize.sync({ force: false }).then(() => {
